@@ -188,16 +188,16 @@ const waitForTransaction_buy = useWaitForTransaction({
                       <td className="border px-4 py-2">{index}</td>
                       <td className="border px-4 py-2">{item[0].slice(0,4)}....{item[0].slice(38,42)}</td>
                       <td className="border px-4 py-2">0xdu{item[1]}</td>
-                      <td className="border px-4 py-2">{Number(item[4])/10**18} {Number(item[2])==du_Address ? ("DU"):("USDT") }</td>
-                      <td className="border px-4 py-2">{Number(item[5])/10**18}  {Number(item[3])==du_Address ? ("DU"):("USDT") }</td>
+                      <td className="border px-4 py-2">{(Number(item[3])/10**18).toFixed(2)} {Number(item[2])==du_Address ? ("DU"):("USDT") }</td>
+                      <td className="border px-4 py-2">{(Number(item[4])/10**18).toFixed(2)}  {Number(item[2])!=du_Address ? ("DU"):("USDT") }</td>
 
-                      <td className="border px-4 py-2">{count(Number(item[6]))}</td>
+                      <td className="border px-4 py-2">{count(Number(item[5]))}</td>
                       {/* <td className="border px-4 py-2">{Number(item[7])==0?(""):(count(Number(item[7])))}</td> */}
 
                       <td className="border px-4 py-2">
                         <div className="flex items-center justify-center gap-3">
-                          <button className="btn" onClick={()=> action(item[1],2,item[9])}>Decline</button>
-                          <button className="btn" onClick={()=>action(item[1],1,item[9])}>Approve</button>
+                          <button className="btn" onClick={()=> action(item[1],2,item[7])}>Decline</button>
+                          <button className="btn" onClick={()=>action(item[1],1,item[7])}>Approve</button>
                         </div>
                       </td>
                     </tr>

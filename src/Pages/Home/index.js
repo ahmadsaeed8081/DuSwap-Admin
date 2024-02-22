@@ -109,12 +109,12 @@ const Main = () => {
 
       let TotalStaked = await contract.methods.total_orders().call();  
 
-      let totalusers = await contract.methods.total_users().call();      
+      // let totalusers = await contract.methods.total_users().call();      
       let owner = await contract.methods.owner().call();      
 
       let owner_DuBalance = await du_contract.methods.balanceOf(address).call();    
       set_TotalStaked(TotalStaked)
-      set_total_users(totalusers)
+      // set_total_users(totalusers)
       set_owner_DuBalance(owner_DuBalance/10**18)
       set_contract_DuBalance(contract_DuBalance/10**18)
       set_contract_usdtBalance(contract_usdtBalance/10**18)
@@ -244,11 +244,7 @@ const Main = () => {
       title: "Contract usdt Balance",
       price: Number(contract_usdtBalance).toFixed(2),
     },
-    {
-      img: "../images/cash-withdrawal1.png",
-      title: "Total Users",
-      price: total_users,
-    },
+
     {
       img: "../images/wallet-img.png",
       title: "My Balance",
