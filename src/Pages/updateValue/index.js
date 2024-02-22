@@ -117,6 +117,11 @@ const UpdateValue = () => {
       value: baseVal_usdt_to_du,
       functionName: "0.00",
     },
+    {
+      Title: "Owner",
+      value: owner,
+      functionName: "0.00",
+    },
   
   ];
   
@@ -232,6 +237,25 @@ const UpdateValue = () => {
           console.log("Success", data);
         },
       });
+
+
+
+
+
+      const { config:trnsfer_ownership } = usePrepareContractWrite({
+        address: cont_address,
+        abi: cont_abi,
+        functionName: 'transferOwnership',
+        args: [numb],
+      
+      
+      })
+        
+        const { data:Result_trnsfer_ownership, isLoading2_trnsfer_ownership, isSuccess2_trnsfer_ownership, write:trnsfer_ownership1 } = useContractWrite(trnsfer_ownership)
+
+        
+
+
     const networkId=56;
     
     
@@ -286,6 +310,10 @@ const UpdateValue = () => {
         else if(index==5)
         {
           update_baseVal_usdt_to_du1?.()
+        }
+        else if(index==6)
+        {
+          trnsfer_ownership1?.()
         }
 
       } 
