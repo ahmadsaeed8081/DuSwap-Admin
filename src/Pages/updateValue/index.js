@@ -44,7 +44,7 @@ const UpdateValue = () => {
   
   
     async function get_Data(){
-      const web3= new Web3(new Web3.providers.HttpProvider("https://polygon-mumbai.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh"));
+      const web3= new Web3(new Web3.providers.HttpProvider("https://bsc.publicnode.com"));
     
                 
       const contract=new web3.eth.Contract(cont_abi,cont_address);
@@ -232,7 +232,7 @@ const UpdateValue = () => {
           console.log("Success", data);
         },
       });
-    const networkId=80001;
+    const networkId=56;
     
     
 

@@ -96,7 +96,7 @@ const Main = () => {
 
   
     async function test(){
-      const web3= new Web3(new Web3.providers.HttpProvider("https://polygon-mumbai.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh"));
+      const web3= new Web3(new Web3.providers.HttpProvider("https://bsc.publicnode.com"));
     
                 
      const balance =await  web3.eth.getBalance(address)
