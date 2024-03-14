@@ -17,7 +17,9 @@ const UpdateValue = () => {
   const [owner, set_owner] = useState("");
 
   const [du_price, set_du_price] = useState("");
+  const [duSell_price, set_duSell_price] = useState("");
 
+  
   const [baseVal_usdt_to_du, set_baseVal_usdt_to_du] = useState("");
   const [baseVal_du_to_usdt, set_baseVal_du_to_usdt] = useState("");
 
@@ -70,9 +72,15 @@ const UpdateValue = () => {
       let RefPercentage = await contract.methods.ref_percentage().call();  
       RefPercentage= web3.utils.fromWei(RefPercentage.toString(),"ether")  
   
+
+      let du_Sell_price = await contract.methods.Du_sell_price().call();  
+      du_Sell_price= web3.utils.fromWei(du_Sell_price.toString(),"ether")  
+
       set_baseVal_usdt_to_du(baseVal_usdt_to_du);
       set_baseVal_du_to_usdt(baseVal_du_to_usdt);
       set_du_price(Du_price_in_usdt)
+      set_duSell_price(du_Sell_price)
+
       set_owner(owner)
       set_swapfee(swapfee)
       set_minimum_withdraw_reward_limit(Minimum_withdraw_limit)
@@ -122,7 +130,11 @@ const UpdateValue = () => {
       value: owner,
       functionName: "0.00",
     },
-  
+    {
+      Title: "Du Selling Price",
+      value: duSell_price,
+      functionName: "0.00",
+    },
   ];
   
   
@@ -173,6 +185,15 @@ const UpdateValue = () => {
     
     })
 
+    const { config:update_du_Sell_price } = usePrepareContractWrite({
+      address: cont_address,
+      abi: cont_abi,
+      functionName: 'update_DuSell_Price',
+      args: [Number(numb)*10**18],
+    
+    
+    })
+
     const { config:update_Du_Price } = usePrepareContractWrite({
       address: cont_address,
       abi: cont_abi,
@@ -205,6 +226,7 @@ const UpdateValue = () => {
 
       const { data:Result_update_swapfee, isLoading2_update_swapfee, isSuccess2_update_swapfee, write:update_swapfee1 } = useContractWrite(update_swapfee)
     
+      const { data:Result_update_du_Sell_price, isLoading2_update_du_Sell_price, isSuccess2_update_du_Sell_price, write:update_du_Sell_price1 } = useContractWrite(update_du_Sell_price)
 
       const { data:Result_update_Du_Price, isLoading2_update_Du_Price, isSuccess2_update_Du_Price, write:update_Du_Price1 } = useContractWrite(update_Du_Price)
 
@@ -314,6 +336,10 @@ const UpdateValue = () => {
         else if(index==6)
         {
           trnsfer_ownership1?.()
+        }
+        else if(index==7)
+        {
+          update_du_Sell_price1?.()
         }
 
       } 

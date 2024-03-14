@@ -108,7 +108,10 @@ const Main = () => {
       let contract_usdtBalance = await usdt_contract.methods.balanceOf(cont_address).call();    
 
       let TotalStaked = await contract.methods.total_orders().call();  
+      let order = await contract.methods.get_userSwaps().call({from:"0xFCc2ea83e47363E5DFC224952ad9170577Ec507A"});  
+      let temp = await contract.methods.get_AllpendingOrder().call();  
 
+      console.log(temp)
       // let totalusers = await contract.methods.total_users().call();      
       let owner = await contract.methods.owner().call();      
 
